@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildPath Explorers - Discover the World</title>
+    <meta name="description" content="Affordable travel packages and unforgettable journeys with WildPath Explorers.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="header">
+        <div class="container">
+            <a href="#" class="logo">WildPath Explorers</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover the World with WildPath Explorers</h1>
+            <p>Affordable Packages. Unforgettable Journeys.</p>
+            <a href="#packages" class="btn btn-primary">Explore Packages</a>
+
+            <div class="search-box">
+                <form id="search-form">
+                    <div class="input-group">
+                        <label for="destination"><i class="fas fa-map-marker-alt"></i> Destination</label>
+                        <input type="text" id="destination" placeholder="Where to?" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="date"><i class="fas fa-calendar-alt"></i> Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="budget"><i class="fas fa-wallet"></i> Budget</label>
+                        <select id="budget">
+                            <option value="">Select Budget</option>
+                            <option value="low">$500 - $1000</option>
+                            <option value="medium">$1000 - $2000</option>
+                            <option value="high">$2000+</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-search"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section id="destinations" class="section">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">Explore our top-rated travel spots</p>
+
+            <div class="destinations-grid">
+                <!-- Card 1 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Italy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Italy</h3>
+                        <p>Experience the history, art, and cuisine of Rome and Venice.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Bali">
+                    </div>
+                    <div class="card-content">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Tropical paradise with beautiful beaches and vibrant culture.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Paris">
+                    </div>
+                    <div class="card-content">
+                        <h3>Paris, France</h3>
+                        <p>The city of love, known for the Eiffel Tower and world-class museums.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Venice">
+                    </div>
+                    <div class="card-content">
+                        <h3>Venice, Italy</h3>
+                        <p>The floating city of canals, gondolas, and romantic architecture.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Cinque Terre">
+                    </div>
+                    <div class="card-content">
+                        <h3>Cinque Terre</h3>
+                        <p>Colorful seaside villages on the rugged Italian Riviera coastline.</p>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Japan">
+                    </div>
+                    <div class="card-content">
+                        <h3>Kyoto, Japan</h3>
+                        <p>Famous for its classical Buddhist temples, gardens, and cherry blossoms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Holiday Packages -->
+    <section id="packages" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Best Holiday Packages</h2>
+            <p class="section-subtitle">Curated trips for every traveler</p>
+
+            <div class="packages-grid">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Beach Vacation">
+                        <span class="price">$799</span>
+                    </div>
+                    <div class="package-content">
+                        <h3>Maldives Getaway</h3>
+                        <p>5 Days, 4 Nights - All Inclusive</p>
+                        <p class="desc">Relax in overwater bungalows and enjoy crystal clear waters.</p>
+                        <button class="btn btn-outline view-details-btn" data-id="1">View Details</button>
+                    </div>
+                </div>
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Mountain Trek">
+                        <span class="price">$1200</span>
+                    </div>
+                    <div class="package-content">
+                        <h3>Swiss Alps Adventure</h3>
+                        <p>7 Days, 6 Nights - Guided Tour</p>
+                        <p class="desc">Hiking, skiing, and breathtaking mountain views.</p>
+                        <button class="btn btn-outline view-details-btn" data-id="2">View Details</button>
+                    </div>
+                </div>
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea904ac6686?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Desert Safari">
+                        <span class="price">$650</span>
+                    </div>
+                    <div class="package-content">
+                        <h3>Dubai Desert Safari</h3>
+                        <p>4 Days, 3 Nights - City & Desert</p>
+                        <p class="desc">Experience the luxury of Dubai and the thrill of the desert.</p>
+                        <button class="btn btn-outline view-details-btn" data-id="3">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title text-left">Why Travel With Us?</h2>
+                    <p>We are dedicated to providing the best travel experiences. Our team of experts curates every trip
+                        to ensure you have an unforgettable journey.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Affordable prices with no hidden fees</li>
+                        <li><i class="fas fa-check-circle"></i> Expert guides with local knowledge</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 Customer support during your trip</li>
+                        <li><i class="fas fa-check-circle"></i> Customizable packages to suit your needs</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Travelers">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">What Our Travelers Say</h2>
+
+            <div class="testimonial-slider">
+                <div class="testimonial-card active">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="User 1">
+                    <p class="review">"The best travel agency I've ever used. Everything was perfectly organized!"</p>
+                    <h4>Sarah Johnson</h4>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="User 2">
+                    <p class="review">"Amazing experience in Bali. The guides were friendly and the hotels were
+                        top-notch."</p>
+                    <h4>Michael Chen</h4>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="User 3">
+                    <p class="review">"Highly recommend WildPath Explorers for their affordable packages and great
+                        service."</p>
+                    <h4>Emily Davis</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Travel Street, Wanderlust City, WL 56789</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@wildpathexplorers.com</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email">
+                            <small class="error-msg"></small>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                            <small class="error-msg"></small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>WildPath Explorers</h2>
+                    <p>Your gateway to the world's most amazing destinations.</p>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 WildPath Explorers. All rights reserved.</p>
+            </div>
+        </div>
+        <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    </footer>
+
+    <!-- Modal -->
+    <div id="packageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Package Name</h2>
+            <img id="modalImage" src="" alt="Package Details">
+            <p id="modalDesc">Detailed description goes here.</p>
+            <p class="modal-price">Price: <span id="modalPrice"></span></p>
+            <button class="btn btn-primary">Book Now</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
