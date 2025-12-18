@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderLeaf Travels - Explore India & Beyond</title>
+    <title>WildPath Explorers - Explore India & Beyond</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Fonts: Poppins -->
@@ -22,7 +22,7 @@
     <!-- Header / Navigation -->
     <header id="header">
         <nav class="navbar">
-            <div class="logo">WanderLeaf Travels</div>
+            <div class="logo">WildPath Explorers</div>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#destinations">Destinations</a></li>
@@ -47,28 +47,28 @@
             <div class="search-box">
                 <div class="input-group">
                     <label>Destination</label>
-                    <input type="text" placeholder="Where do you want to go?">
+                    <input type="text" id="searchInput" placeholder="Where do you want to go?">
                 </div>
                 <div class="input-group">
                     <label>Budget</label>
-                    <select>
-                        <option>Choose Budget</option>
-                        <option>Under ₹10k</option>
-                        <option>₹10k - ₹30k</option>
-                        <option>₹30k - ₹50k</option>
-                        <option>Above ₹50k</option>
+                    <select id="budgetSelect">
+                        <option value="any">Choose Budget</option>
+                        <option value="10000">Under ₹10k</option>
+                        <option value="30000">₹10k - ₹30k</option>
+                        <option value="50000">₹30k - ₹50k</option>
+                        <option value="more">Above ₹50k</option>
                     </select>
                 </div>
                 <div class="input-group">
                     <label>Duration</label>
-                    <select>
-                        <option>Any Duration</option>
-                        <option>3 - 5 Days</option>
-                        <option>5 - 8 Days</option>
-                        <option>10+ Days</option>
+                    <select id="durationSelect">
+                        <option value="any">Any Duration</option>
+                        <option value="short">3 - 5 Days</option>
+                        <option value="medium">5 - 8 Days</option>
+                        <option value="long">10+ Days</option>
                     </select>
                 </div>
-                <button class="btn-search"><i class="fas fa-search"></i> Search</button>
+                <button class="btn-search" id="searchBtn"><i class="fas fa-search"></i> Search</button>
             </div>
         </div>
     </section>
@@ -355,7 +355,7 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">Why Choose WanderLeaf?</h2>
+            <h2 class="section-title">Why Choose WildPath?</h2>
             <div class="features-grid">
                 <div class="feature-box">
                     <i class="fas fa-certificate"></i>

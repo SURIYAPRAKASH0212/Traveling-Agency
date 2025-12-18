@@ -1,4 +1,4 @@
-// WanderLeaf Travels - JavaScript
+// WildPath Explorers - JavaScript
 
 /* 
   Data: Packages Array 
@@ -171,34 +171,131 @@ const mInclusions = document.getElementById('m-inclusions');
 const mExclusions = document.getElementById('m-exclusions');
 
 // Open Modal
-btnsDetails.forEach(btn => {
-    btn.addEventListener('click', () => {
+// --- 7. Search & Filter Logic ---
+const searchBtn = document.getElementById('searchBtn');
+const searchInput = document.getElementById('searchInput');
+const budgetSelect = document.getElementById('budgetSelect');
+const durationSelect = document.getElementById('durationSelect');
+const packagesGrid = document.querySelector('.packages-grid');
+
+function renderPackages(data) {
+    packagesGrid.innerHTML = '';
+
+    if (data.length === 0) {
+        packagesGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 20px;"><h3>No packages found matching your criteria.</h3></div>';
+        return;
+    }
+
+    data.forEach(pkg => {
+        const card = document.createElement('div');
+        card.className = 'package-card';
+        card.innerHTML = `
+            <div class="pkg-img">
+                <img src="${pkg.image}" alt="${pkg.name}">
+            </div>
+            <div class="pkg-content">
+                <h3>${pkg.name}</h3>
+                <span class="duration"><i class="far fa-clock"></i> ${pkg.duration}</span>
+                <p class="summary">${pkg.itinerary[1] || pkg.name}</p>
+                <div class="price-row">
+                    <span class="price">${pkg.price}</span>
+                    <button class="btn-details" data-id="${pkg.id}">View Full Details</button>
+                </div>
+            </div>
+        `;
+        packagesGrid.appendChild(card);
+    });
+
+    // Re-attach event listeners for new buttons
+    // Note: We are using Event Delegation for the Modal opening in Section 2, so no need to re-attach if we use delegation there too.
+    // BUT Section 2 used direct listeners `btnsDetails.forEach`. I need to change Section 2 to delegation OR re-attach here.
+    // Let's use delegation for Modal opening as well to be safe and clean.
+}
+
+function filterPackages() {
+    const query = searchInput.value.toLowerCase();
+    const budget = budgetSelect.value;
+    const duration = durationSelect.value;
+
+    const filtered = packages.filter(pkg => {
+        // 1. Text Search
+        const matchesName = pkg.name.toLowerCase().includes(query);
+        const matchesLoc = pkg.itinerary.some(day => day.toLowerCase().includes(query));
+        const textMatch = matchesName || matchesLoc;
+
+        // 2. Budget Filter
+        const price = parseInt(pkg.price.replace(/[^\d]/g, ''));
+        let budgetMatch = true;
+        if (budget === '10000') budgetMatch = price < 10000;
+        else if (budget === '30000') budgetMatch = price >= 10000 && price <= 30000;
+        else if (budget === '50000') budgetMatch = price > 30000 && price <= 50000;
+        else if (budget === 'more') budgetMatch = price > 50000;
+
+        // 3. Duration Filter
+        const days = parseInt(pkg.duration.match(/\d+/)[0]);
+        let durationMatch = true;
+        if (duration === 'short') durationMatch = days >= 3 && days <= 5;
+        else if (duration === 'medium') durationMatch = days > 5 && days <= 8;
+        else if (duration === 'long') durationMatch = days >= 10;
+
+        return textMatch && budgetMatch && durationMatch;
+    });
+
+    renderPackages(filtered);
+}
+
+// Event Listener
+if (searchBtn) {
+    searchBtn.addEventListener('click', filterPackages);
+}
+
+// Initial Render (to ensure dynamic rendering works)
+// Note: We will Replace the hardcoded HTML with this dynamic render on load
+document.addEventListener('DOMContentLoaded', () => {
+    renderPackages(packages);
+});
+
+// Update Modal Open Logic to Delegation (replaces Section 2 logic partially)
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.classList.contains('btn-details')) {
+        const btn = e.target;
         const pkgId = parseInt(btn.getAttribute('data-id'));
         const pkg = packages.find(p => p.id === pkgId);
 
         if (pkg) {
             // Populate Data
-            mImage.src = pkg.image;
-            mTitle.textContent = pkg.name;
-            mDuration.textContent = pkg.duration;
-            mPrice.textContent = pkg.price;
+            const mImage = document.getElementById('m-image');
+            const mTitle = document.getElementById('m-title');
+            const mDuration = document.getElementById('m-duration');
+            const mPrice = document.getElementById('m-price');
+            const mItinerary = document.getElementById('m-itinerary');
+            const mInclusions = document.getElementById('m-inclusions');
+            const mExclusions = document.getElementById('m-exclusions');
+            const modal = document.getElementById('package-modal');
+
+            if (mImage) mImage.src = pkg.image;
+            if (mTitle) mTitle.textContent = pkg.name;
+            if (mDuration) mDuration.textContent = pkg.duration;
+            if (mPrice) mPrice.textContent = pkg.price;
 
             // Itinerary
-            mItinerary.innerHTML = pkg.itinerary.map(day =>
+            if (mItinerary) mItinerary.innerHTML = pkg.itinerary.map(day =>
                 `<div class="day-item"><strong>${day.split(':')[0]}</strong>${day.split(':').slice(1).join(':')}</div>`
             ).join('');
 
             // Inclusions
-            mInclusions.innerHTML = pkg.inclusions.map(inc => `<li>${inc}</li>`).join('');
+            if (mInclusions) mInclusions.innerHTML = pkg.inclusions.map(inc => `<li>${inc}</li>`).join('');
 
             // Exclusions
-            mExclusions.innerHTML = pkg.exclusions.map(exc => `<li>${exc}</li>`).join('');
+            if (mExclusions) mExclusions.innerHTML = pkg.exclusions.map(exc => `<li>${exc}</li>`).join('');
 
             // Show Modal
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
-    });
+    }
 });
 
 // Close Modal
@@ -368,9 +465,9 @@ const pAmount = document.getElementById('p-amount');
 
 let currentPackagePrice = 0;
 
-// Open Booking Modal
-if (openBookingBtn) {
-    openBookingBtn.addEventListener('click', () => {
+// Open Booking Modal (Event Delegation)
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'openBookingBtn') {
         // Close package modal if open
         const pkgModal = document.getElementById('package-modal');
         if (pkgModal) pkgModal.style.display = 'none';
@@ -378,7 +475,7 @@ if (openBookingBtn) {
         // Reset Steps
         if (bookingStep1) bookingStep1.style.display = 'block';
         if (bookingStep2) bookingStep2.style.display = 'none';
-        bookingForm.reset();
+        if (bookingForm) bookingForm.reset();
 
         // Get current package details
         const pkgTitleEl = document.getElementById('m-title');
@@ -387,7 +484,7 @@ if (openBookingBtn) {
         if (pkgTitleEl && pkgPriceEl) {
             const pkgName = pkgTitleEl.textContent;
             const priceText = pkgPriceEl.textContent;
-            currentPackagePrice = parseInt(priceText.replace(/[^\d]/g, ''));
+            currentPackagePrice = parseInt(priceText.replace(/[^\d]/g, '')) || 0;
 
             // Set Initial Values
             if (bPackageName) bPackageName.textContent = `Booking for: ${pkgName}`;
@@ -400,8 +497,8 @@ if (openBookingBtn) {
                 document.body.style.overflow = 'hidden';
             }
         }
-    });
-}
+    }
+});
 
 // Close Booking Modal
 if (closeBookingBtn) {
