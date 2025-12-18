@@ -4,295 +4,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WildPath Explorers - Discover the World</title>
-    <meta name="description" content="Affordable travel packages and unforgettable journeys with WildPath Explorers.">
+    <title>WanderLeaf Travels - Explore India & Beyond</title>
+    <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <!-- Header / Navigation -->
     <header id="header">
-        <div class="container">
-            <a href="#" class="logo">WildPath Explorers</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#destinations">Destinations</a></li>
-                    <li><a href="#packages">Packages</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
+        <nav class="navbar">
+            <div class="logo">WanderLeaf Travels</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Discover the World with WildPath Explorers</h1>
-            <p>Affordable Packages. Unforgettable Journeys.</p>
-            <a href="#packages" class="btn btn-primary">Explore Packages</a>
+            <h1>Explore India & Beyond</h1>
+            <p>Handcrafted Journeys at Honest Prices</p>
+            <a href="#packages" class="btn-primary">View Packages</a>
 
+            <!-- Search UI -->
             <div class="search-box">
-                <form id="search-form">
-                    <div class="input-group">
-                        <label for="destination"><i class="fas fa-map-marker-alt"></i> Destination</label>
-                        <input type="text" id="destination" placeholder="Where to?" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="date"><i class="fas fa-calendar-alt"></i> Date</label>
-                        <input type="date" id="date" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="budget"><i class="fas fa-wallet"></i> Budget</label>
-                        <select id="budget">
-                            <option value="">Select Budget</option>
-                            <option value="low">$500 - $1000</option>
-                            <option value="medium">$1000 - $2000</option>
-                            <option value="high">$2000+</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-search"><i class="fas fa-search"></i> Search</button>
-                </form>
+                <div class="input-group">
+                    <label>Destination</label>
+                    <input type="text" placeholder="Where do you want to go?">
+                </div>
+                <div class="input-group">
+                    <label>Budget</label>
+                    <select>
+                        <option>Choose Budget</option>
+                        <option>Under ₹10k</option>
+                        <option>₹10k - ₹30k</option>
+                        <option>₹30k - ₹50k</option>
+                        <option>Above ₹50k</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Duration</label>
+                    <select>
+                        <option>Any Duration</option>
+                        <option>3 - 5 Days</option>
+                        <option>5 - 8 Days</option>
+                        <option>10+ Days</option>
+                    </select>
+                </div>
+                <button class="btn-search"><i class="fas fa-search"></i> Search</button>
             </div>
         </div>
     </section>
 
-    <!-- Popular Destinations -->
-    <section id="destinations" class="section">
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations-section">
         <div class="container">
             <h2 class="section-title">Popular Destinations</h2>
-            <p class="section-subtitle">Explore our top-rated travel spots</p>
-
             <div class="destinations-grid">
-                <!-- Card 1 -->
+                <!-- Cards will be populated by HTML directly for simplicity as per request -->
                 <div class="destination-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Italy">
-                    </div>
-                    <div class="card-content">
-                        <h3>Italy</h3>
-                        <p>Experience the history, art, and cuisine of Rome and Venice.</p>
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Goa">
+                    <div class="dest-info">
+                        <h3>Goa</h3>
+                        <p>Beaches, Sun & Sand</p>
                     </div>
                 </div>
-                <!-- Card 2 -->
                 <div class="destination-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Bali">
-                    </div>
-                    <div class="card-content">
-                        <h3>Bali, Indonesia</h3>
-                        <p>Tropical paradise with beautiful beaches and vibrant culture.</p>
+                    <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Kerala">
+                    <div class="dest-info">
+                        <h3>Kerala</h3>
+                        <p>God's Own Country</p>
                     </div>
                 </div>
-                <!-- Card 3 -->
                 <div class="destination-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Paris">
-                    </div>
-                    <div class="card-content">
-                        <h3>Paris, France</h3>
-                        <p>The city of love, known for the Eiffel Tower and world-class museums.</p>
+                    <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Kashmir">
+                    <div class="dest-info">
+                        <h3>Kashmir</h3>
+                        <p>Paradise on Earth</p>
                     </div>
                 </div>
-                <!-- Card 4 -->
                 <div class="destination-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Venice">
-                    </div>
-                    <div class="card-content">
-                        <h3>Venice, Italy</h3>
-                        <p>The floating city of canals, gondolas, and romantic architecture.</p>
+                    <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Rajasthan">
+                    <div class="dest-info">
+                        <h3>Rajasthan</h3>
+                        <p>Land of Kings</p>
                     </div>
                 </div>
-                <!-- Card 5 -->
                 <div class="destination-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Cinque Terre">
-                    </div>
-                    <div class="card-content">
-                        <h3>Cinque Terre</h3>
-                        <p>Colorful seaside villages on the rugged Italian Riviera coastline.</p>
+                    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Manali">
+                    <div class="dest-info">
+                        <h3>Manali</h3>
+                        <p>Mountains & Adventure</p>
                     </div>
                 </div>
-                <!-- Card 6 -->
                 <div class="destination-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Japan">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Bali">
+                    <div class="dest-info">
+                        <h3>Bali</h3>
+                        <p>Tropical Paradise</p>
                     </div>
-                    <div class="card-content">
-                        <h3>Kyoto, Japan</h3>
-                        <p>Famous for its classical Buddhist temples, gardens, and cherry blossoms.</p>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                        alt="Dubai">
+                    <div class="dest-info">
+                        <h3>Dubai</h3>
+                        <p>Luxury & Skyscrapers</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Holiday Packages -->
-    <section id="packages" class="section bg-light">
+    <!-- Packages Section -->
+    <section id="packages" class="packages-section">
         <div class="container">
-            <h2 class="section-title">Best Holiday Packages</h2>
-            <p class="section-subtitle">Curated trips for every traveler</p>
-
+            <h2 class="section-title">Best Selling Packages</h2>
             <div class="packages-grid">
-                <!-- International Packages -->
-                <!-- Package 1: Maldives (Asia) -->
+                <!-- Data Attributes will be used to pass data to modal for cleanliness -->
+                <!-- Package 1 -->
                 <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Beach Vacation">
-                        <span class="price">$799</span>
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Goa Package">
                     </div>
-                    <div class="package-content">
-                        <h3>Maldives Getaway</h3>
-                        <p>5 Days, 4 Nights - All Inclusive</p>
-                        <p class="desc">Relax in overwater bungalows and enjoy crystal clear waters.</p>
-                        <button class="btn btn-outline view-details-btn" data-id="1">View Details</button>
+                    <div class="pkg-content">
+                        <h3>Goa Beach Escape</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 5D / 4N</span>
+                        <p class="summary">Relax on the pristine beaches of Goa with a mix of party and peace.</p>
+                        <div class="price-row">
+                            <span class="price">₹18,999</span>
+                            <button class="btn-details" data-id="1">View Full Details</button>
+                        </div>
                     </div>
                 </div>
+
                 <!-- Package 2 -->
                 <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Mountain Trek">
-                        <span class="price">$1200</span>
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Kerala Package">
                     </div>
-                    <div class="package-content">
-                        <h3>Swiss Alps Adventure</h3>
-                        <p>7 Days, 6 Nights - Guided Tour</p>
-                        <p class="desc">Hiking, skiing, and breathtaking mountain views.</p>
-                        <button class="btn btn-outline view-details-btn" data-id="2">View Details</button>
+                    <div class="pkg-content">
+                        <h3>Kerala Backwaters</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 6D / 5N</span>
+                        <p class="summary">Experience houseboats, tea gardens, and authentic Ayurveda.</p>
+                        <div class="price-row">
+                            <span class="price">₹26,499</span>
+                            <button class="btn-details" data-id="2">View Full Details</button>
+                        </div>
                     </div>
                 </div>
+
                 <!-- Package 3 -->
                 <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1512453979798-5ea904ac6686?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Desert Safari">
-                        <span class="price">$650</span>
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Manali Package">
                     </div>
-                    <div class="package-content">
-                        <h3>Dubai Desert Safari</h3>
-                        <p>4 Days, 3 Nights - City & Desert</p>
-                        <p class="desc">Experience the luxury of Dubai and the thrill of the desert.</p>
-                        <button class="btn btn-outline view-details-btn" data-id="3">View Details</button>
+                    <div class="pkg-content">
+                        <h3>Manali Snow <br>Adventure</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 5D / 4N</span>
+                        <p class="summary">Snow-capped mountains, Rohtang Pass, and Solang Valley thrills.</p>
+                        <div class="price-row">
+                            <span class="price">₹21,999</span>
+                            <button class="btn-details" data-id="3">View Full Details</button>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Package 4 -->
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Rajasthan Package">
+                    </div>
+                    <div class="pkg-content">
+                        <h3>Rajasthan Royal Heritage</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 7D / 6N</span>
+                        <p class="summary">Explore Jaipur, Jodhpur, and Udaipur in royal style.</p>
+                        <div class="price-row">
+                            <span class="price">₹34,999</span>
+                            <button class="btn-details" data-id="4">View Full Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 5 -->
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Kashmir Package">
+                    </div>
+                    <div class="pkg-content">
+                        <h3>Kashmir Paradise Trip</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 6D / 5N</span>
+                        <p class="summary">Dal Lake Shikara rides, Gulmarg snow, and Pahalgam views.</p>
+                        <div class="price-row">
+                            <span class="price">₹29,499</span>
+                            <button class="btn-details" data-id="5">View Full Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 6 -->
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Bali Package">
+                    </div>
+                    <div class="pkg-content">
+                        <h3>Bali International Tour</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 7D / 6N</span>
+                        <p class="summary">Ubud culture, Kuta beaches, and Nusa Penida island hopping.</p>
+                        <div class="price-row">
+                            <span class="price">₹59,999</span>
+                            <button class="btn-details" data-id="6">View Full Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package 7 -->
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+                            alt="Dubai Package">
+                    </div>
+                    <div class="pkg-content">
+                        <h3>Dubai Luxury Getaway</h3>
+                        <span class="duration"><i class="far fa-clock"></i> 5D / 4N</span>
+                        <p class="summary">Burj Khalifa, Desert Safari, and Dubai Mall shopping spree.</p>
+                        <div class="price-row">
+                            <span class="price">₹74,999</span>
+                            <button class="btn-details" data-id="7">View Full Details</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- About Us -->
-    <section id="about" class="section">
+    <!-- Modal Popup for Package Details -->
+    <div id="package-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- Content injected via JS -->
+                <img src="" id="m-image" alt="Package Image">
+                <h2 id="m-title">Package Name</h2>
+                <div class="m-meta">
+                    <span id="m-duration"></span>
+                    <span id="m-price"></span>
+                </div>
+                <h3>Detailed Itinerary</h3>
+                <div id="m-itinerary" class="itinerary-list"></div>
+
+                <div class="inclusions-row">
+                    <div class="col">
+                        <h3>Inclusions</h3>
+                        <ul id="m-inclusions"></ul>
+                    </div>
+                    <div class="col">
+                        <h3>Exclusions</h3>
+                        <ul id="m-exclusions"></ul>
+                    </div>
+                </div>
+
+                <button class="btn-book" id="openBookingBtn">Book Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content booking-content">
+            <span class="close-modal" id="closeBooking">&times;</span>
+
+            <!-- Step 1: Booking Details -->
+            <div id="booking-step-1">
+                <h2>Book Your Trip</h2>
+                <h3 id="b-package-name" style="color: var(--primary-color); margin-bottom: 20px;"></h3>
+
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="b-name" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="b-phone" placeholder="Enter phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Travel Date</label>
+                        <input type="date" id="b-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Travelers</label>
+                        <input type="number" id="b-travelers" min="1" value="1" required>
+                    </div>
+
+                    <div class="total-price-section"
+                        style="margin: 20px 0; padding: 15px; background: #f0f8ff; border-radius: 5px;">
+                        <h3>Total Amount: <span id="b-total" style="color: var(--secondary-color);">₹0</span></h3>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Confirm & Pay</button>
+                </form>
+            </div>
+
+            <!-- Step 2: Payment QR -->
+            <div id="booking-step-2" style="display: none; text-align: center;">
+                <h2>Scan to Pay</h2>
+                <p>Please scan the QR code using any UPI app to complete your booking.</p>
+                <div class="qr-container" style="margin: 20px auto; max-width: 300px;">
+                    <img src="payment-qr.jpg" alt="Payment QR Code"
+                        style="width: 100%; border-radius: 10px; border: 1px solid #ddd;">
+                </div>
+                <h3 style="margin-bottom: 20px;">Amount to Pay: <span id="p-amount"
+                        style="color: var(--secondary-color);"></span></h3>
+                <button id="paymentDoneBtn" class="btn-submit" style="background: green;">Payment Done</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title text-left">Why Travel With Us?</h2>
-                    <p>We are dedicated to providing the best travel experiences. Our team of experts curates every trip
-                        to ensure you have an unforgettable journey.</p>
-                    <ul class="about-features">
-                        <li><i class="fas fa-check-circle"></i> Affordable prices with no hidden fees</li>
-                        <li><i class="fas fa-check-circle"></i> Expert guides with local knowledge</li>
-                        <li><i class="fas fa-check-circle"></i> 24/7 Customer support during your trip</li>
-                        <li><i class="fas fa-check-circle"></i> Customizable packages to suit your needs</li>
-                    </ul>
+            <h2 class="section-title">Why Choose WanderLeaf?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fas fa-certificate"></i>
+                    <h3>10+ Years Experience</h3>
+                    <p>Crafting memorable journeys since 2015.</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Travelers">
+                <div class="feature-box">
+                    <i class="fas fa-rupee-sign"></i>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden charges. What you see is what you pay.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Trusted Partners</h3>
+                    <p>Verified hotels and transport services only.</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>We are here for you, anytime, anywhere.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="section bg-light">
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
         <div class="container">
             <h2 class="section-title">What Our Travelers Say</h2>
-
             <div class="testimonial-slider">
-                <div class="testimonial-card active">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-                        alt="User 1">
-                    <p class="review">"The best travel agency I've ever used. Everything was perfectly organized!"</p>
-                    <h4>Sarah Johnson</h4>
+                <div class="testimonial-slide active">
+                    <p>"The best trip to Kerala we ever had! Everything was so well organized."</p>
+                    <h4>— Rahul Sharma, Delhi</h4>
                 </div>
-                <div class="testimonial-card">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-                        alt="User 2">
-                    <p class="review">"Amazing experience in Bali. The guides were friendly and the hotels were
-                        top-notch."</p>
-                    <h4>Michael Chen</h4>
+                <div class="testimonial-slide">
+                    <p>"Amazing service for our Bali honeymoon. Highly recommended!"</p>
+                    <h4>— Priya & Ankit, Mumbai</h4>
                 </div>
-                <div class="testimonial-card">
-                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-                        alt="User 3">
-                    <p class="review">"Highly recommend WildPath Explorers for their affordable packages and great
-                        service."</p>
-                    <h4>Emily Davis</h4>
+                <div class="testimonial-slide">
+                    <p>"Transparent pricing and great hotel selection in Rajasthan."</p>
+                    <h4>— Vikram Singh, Bangalore</h4>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title">Get in Touch</h2>
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>123 Travel Street, Wanderlust City, WL 56789</p>
+                        <p>123, Travel Hub, MG Road, Bangalore, India</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <p>+1 (555) 123-4567</p>
+                        <p>+91 98765 43210</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@wildpathexplorers.com</p>
+                        <p>hello@wanderleaf.com</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name">
-                            <small class="error-msg"></small>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Your Email">
-                            <small class="error-msg"></small>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" rows="5" placeholder="Your Message"></textarea>
-                            <small class="error-msg"></small>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name">
+                        <small class="error-msg"></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email">
+                        <small class="error-msg"></small>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                        <small class="error-msg"></small>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                    <p class="success-msg" style="display:none; color: green; margin-top: 10px;">Message sent
+                        successfully!</p>
+                </form>
             </div>
         </div>
     </section>
@@ -300,36 +446,18 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>WildPath Explorers</h2>
-                    <p>Your gateway to the world's most amazing destinations.</p>
-                </div>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 WildPath Explorers. All rights reserved.</p>
-            </div>
+            <p>&copy; 2025 WanderLeaf Travels. All Rights Reserved.</p>
         </div>
-        <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
     </footer>
 
-    <!-- Modal -->
-    <div id="packageModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 id="modalTitle">Package Name</h2>
-            <img id="modalImage" src="" alt="Package Details">
-            <p id="modalDesc">Detailed description goes here.</p>
-            <p class="modal-price">Price: <span id="modalPrice"></span></p>
-            <button class="btn btn-primary">Book Now</button>
-        </div>
-    </div>
+    <!-- Back to Top -->
+    <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>

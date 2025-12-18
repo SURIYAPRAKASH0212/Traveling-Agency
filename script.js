@@ -1,40 +1,139 @@
-document.addEventListener('DOMContentLoaded', () => {
+// WanderLeaf Travels - JavaScript
 
-    // --------------------------------------------------------------------
-    // 1. Sticky Navigation & Back to Top Button
-    // --------------------------------------------------------------------
-    const header = document.querySelector('header');
-    const backToTopBtn = document.getElementById('backToTop');
+/* 
+  Data: Packages Array 
+  Contains all details for the modal popup 
+*/
+const packages = [
+    {
+        id: 1,
+        name: "Goa Beach Escape",
+        duration: "5 Days / 4 Nights",
+        price: "₹18,999",
+        image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Goa - Transfer to Hotel - Leisure",
+            "Day 2: North Goa Tour (Calangute, Baga, Fort Aguada)",
+            "Day 3: South Goa Tour (Colva, Basilicas, Cruise)",
+            "Day 4: Day at Leisure / Water Sports",
+            "Day 5: Airport Transfer - Departure"
+        ],
+        inclusions: ["3 Star Hotel Stay", "Daily Breakfast", "Airport Transfers", "Sightseeing by AC Car"],
+        exclusions: ["Airfare", "Water Sports", "Personal Expenses"]
+    },
+    {
+        id: 2,
+        name: "Kerala Backwaters Tour",
+        duration: "6 Days / 5 Nights",
+        price: "₹26,499",
+        image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Kochi - Transfer to Munnar",
+            "Day 2: Munnar Sightseeing (Tea Gardens, Mattupetty Dam)",
+            "Day 3: Munnar to Thekkady (Spice Plantation)",
+            "Day 4: Thekkady to Alleppey (Houseboat Stay)",
+            "Day 5: Alleppey to Kochi - City Tour",
+            "Day 6: Departure from Kochi"
+        ],
+        inclusions: ["Houseboat Stay with Meals", "Hotels in Munnar & Thekkady", "All Transfers", "Driver Allowance"],
+        exclusions: ["Entry Fees", "Lunch & Dinner in Hotels", "Airfare"]
+    },
+    {
+        id: 3,
+        name: "Manali Snow Adventure",
+        duration: "5 Days / 4 Nights",
+        price: "₹21,999",
+        image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Manali - Local Sightseeing",
+            "Day 2: Solang Valley & Snow Points",
+            "Day 3: Kullu & Naggar Castle",
+            "Day 4: Manikaran Sahib Visit",
+            "Day 5: Transfer to Bus Stand - Departure"
+        ],
+        inclusions: ["Luxury Volvo Bus Tickets", "Hotel Stay", "Breakfast & Dinner", "Sightseeing Cab"],
+        exclusions: ["Heater Charges", "Adventure Activities Cost", "Lunch"]
+    },
+    {
+        id: 4,
+        name: "Rajasthan Royal Heritage",
+        duration: "7 Days / 6 Nights",
+        price: "₹34,999",
+        image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Jaipur - Chokhi Dhani Visit",
+            "Day 2: Jaipur Sightseeing (Amber Fort, Hawa Mahal)",
+            "Day 3: Jaipur to Jodhpur - Blue City Tour",
+            "Day 4: Jodhpur Sightseeing",
+            "Day 5: Jodhpur to Udaipur",
+            "Day 6: Udaipur City Palace & Lake Pichola",
+            "Day 7: Departure"
+        ],
+        inclusions: ["Heritage Hotel Stays", "Breakfast", "Private Car for Tour", "Guide Services"],
+        exclusions: ["Monument Entry Fees", "Personal Expenses", "Tips"]
+    },
+    {
+        id: 5,
+        name: "Kashmir Paradise Trip",
+        duration: "6 Days / 5 Nights",
+        price: "₹29,499",
+        image: "https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Srinagar - Shikara Ride",
+            "Day 2: Srinagar to Gulmarg day trip",
+            "Day 3: Srinagar to Pahalgam",
+            "Day 4: Pahalgam Sightseeing",
+            "Day 5: Return to Srinagar - Local Market",
+            "Day 6: Departure"
+        ],
+        inclusions: ["Houseboat Stay", "Hotel in Pahalgam", "Breakfast & Dinner", "Shikara Ride"],
+        exclusions: ["Gondola Ride Tickets", "Lunch", "Garden Entry Fees"]
+    },
+    {
+        id: 6,
+        name: "Bali International Tour",
+        duration: "7 Days / 6 Nights",
+        price: "₹59,999",
+        image: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Bali (Denpasar) - Transfer to Hotel",
+            "Day 2: Ubud Tour - Monkey Forest & Swing",
+            "Day 3: Kintamani Volcano View",
+            "Day 4: Nusa Penida Island Tour",
+            "Day 5: Water Sports at Tanjung Benoa",
+            "Day 6: Sunset Dinner Cruise",
+            "Day 7: Airport Transfer"
+        ],
+        inclusions: ["4 Star Hotel", "Daily Breakfast", "All Tours with Guide", "Entrance Fees"],
+        exclusions: ["Visa on Arrival", "Flights", "Personal Shopping"]
+    },
+    {
+        id: 7,
+        name: "Dubai Luxury Getaway",
+        duration: "5 Days / 4 Nights",
+        price: "₹74,999",
+        image: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=800&auto=format&fit=crop&q=60",
+        itinerary: [
+            "Day 1: Arrival in Dubai - Dhow Cruise Dinner",
+            "Day 2: Dubai City Tour & Burj Khalifa (124th Floor)",
+            "Day 3: Desert Safari with BBQ Dinner",
+            "Day 4: Abu Dhabi City Tour & Ferrari World",
+            "Day 5: Shopping at Dubai Mall - Departure"
+        ],
+        inclusions: ["4 Star Hotel", "Daily Breakfast", "All Entry Tickets", "Visa Included"],
+        exclusions: ["Dirham Fee at Hotel", "Personal Expenses", "Lunch"]
+    }
+];
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('sticky');
-            backToTopBtn.style.display = 'flex';
-        } else {
-            header.classList.remove('sticky');
-            backToTopBtn.style.display = 'none';
-        }
-    });
+// --- 1. Mobile Menu Toggle ---
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // --------------------------------------------------------------------
-    // 2. Mobile Hamburger Menu
-    // --------------------------------------------------------------------
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-links a');
-
+if (hamburger) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-
-        // Toggle icon between bars and times
+        hamburger.classList.toggle('active');
+        // Change icon based on state (optional)
         const icon = hamburger.querySelector('i');
         if (navLinks.classList.contains('active')) {
             icon.classList.remove('fa-bars');
@@ -44,227 +143,313 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.add('fa-bars');
         }
     });
+}
 
-    // Close menu when clicking a link
-    navLinksItems.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            document.body.classList.remove('menu-open');
-            const icon = hamburger.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        });
-    });
-
-    // --------------------------------------------------------------------
-    // 3. Search Box Animation
-    // --------------------------------------------------------------------
-    const searchBox = document.querySelector('.search-box');
-
-    // Add a small delay to ensure the animation plays after other hero elements
-    setTimeout(() => {
-        searchBox.classList.add('show');
-    }, 1000);
-
-    // --------------------------------------------------------------------
-    // 4. Modal Popup for Packages
-    // --------------------------------------------------------------------
-    const modal = document.getElementById('packageModal');
-    const closeModal = document.querySelector('.close-modal');
-    const viewBtns = document.querySelectorAll('.view-details-btn');
-    const packageImages = document.querySelectorAll('.package-image');
-
-    // Modal Content Elements
-    const modalTitle = document.getElementById('modalTitle');
-    const modalImage = document.getElementById('modalImage');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-
-    // Dummy Data for Packages
-    const packageData = {
-        1: {
-            title: "Maldives Getaway",
-            image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            desc: "Escape to paradise with our 5-day Maldives Getaway. Enjoy luxury overwater bungalows, private beach access, and world-class snorkeling. Includes all meals, airport transfers, and a sunset cruise.",
-            price: "$799"
-        },
-        2: {
-            title: "Swiss Alps Adventure",
-            image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            desc: "Experience the majesty of the Swiss Alps. This 7-day guided tour takes you through scenic hiking trails, charming villages, and offers skiing opportunities. Includes accommodation, breakfast, and train passes.",
-            price: "$1200"
-        },
-        3: {
-            title: "Dubai Desert Safari",
-            image: "https://images.unsplash.com/photo-1512453979798-5ea904ac6686?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-            desc: "Discover the magic of Dubai. Visit the Burj Khalifa, shop at the Dubai Mall, and embark on a thrilling desert safari with dune bashing and a BBQ dinner under the stars. 4 days of excitement.",
-            price: "$650"
-        }
-    };
-
-    // Function to open modal
-    const openModal = (id) => {
-        const data = packageData[id];
-
-        if (data) {
-            modalTitle.textContent = data.title;
-            modalImage.src = data.image;
-            modalDesc.textContent = data.desc;
-            modalPrice.textContent = data.price;
-
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-    };
-
-    viewBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = btn.getAttribute('data-id');
-            openModal(id);
-        });
-    });
-
-    // Add click event to package images
-    packageImages.forEach((imgContainer) => {
-        imgContainer.addEventListener('click', () => {
-            // Find the sibling button to get the data-id
-            const cardContent = imgContainer.nextElementSibling;
-            const btn = cardContent.querySelector('.view-details-btn');
-            if (btn) {
-                const id = btn.getAttribute('data-id');
-                openModal(id);
-            }
-        });
-    });
-
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-    });
-
-    // Close modal when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
-    });
-
-    // --------------------------------------------------------------------
-    // 5. Testimonials Auto-Slider
-    // --------------------------------------------------------------------
-    const testimonials = document.querySelectorAll('.testimonial-card');
-    let currentTestimonial = 0;
-
-    function showNextTestimonial() {
-        if (testimonials.length > 0) {
-            testimonials[currentTestimonial].classList.remove('active');
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            testimonials[currentTestimonial].classList.add('active');
-        }
-    }
-
-    setInterval(showNextTestimonial, 4000);
-
-    // --------------------------------------------------------------------
-    // 6. Contact Form Validation
-    // --------------------------------------------------------------------
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let isValid = true;
-
-            const name = document.getElementById('name');
-            const email = document.getElementById('email');
-            const message = document.getElementById('message');
-
-            // Simple validation function
-            const validateField = (field, msg) => {
-                const formGroup = field.parentElement;
-                const errorDisplay = formGroup.querySelector('.error-msg');
-
-                if (field.value.trim() === '') {
-                    formGroup.classList.add('error');
-                    errorDisplay.textContent = msg;
-                    isValid = false;
-                } else {
-                    formGroup.classList.remove('error');
-                    errorDisplay.textContent = '';
-                }
-            };
-
-            validateField(name, 'Name is required');
-            validateField(email, 'Email is required');
-            validateField(message, 'Message is required');
-
-            // Email format validation
-            if (email.value.trim() !== '') {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email.value.trim())) {
-                    const formGroup = email.parentElement;
-                    const errorDisplay = formGroup.querySelector('.error-msg');
-                    formGroup.classList.add('error');
-                    errorDisplay.textContent = 'Please enter a valid email';
-                    isValid = false;
-                }
-            }
-
-            if (isValid) {
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
-            }
-        });
-    }
-
-    // --------------------------------------------------------------------
-    // 7. Smooth Scroll for Navigation Links (Polyfill-like behavior)
-    // --------------------------------------------------------------------
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Account for fixed header
-                const headerOffset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-
-                // Update active link
-                navLinksItems.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-            }
-        });
-    });
-
-    // Highlight active link on scroll
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const sections = document.querySelectorAll('section');
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinksItems.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
+// Close menu when clicking link
+document.querySelectorAll('.nav-links li a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const icon = hamburger.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
     });
 });
+
+
+// --- 2. Modal Logic ---
+const modal = document.getElementById('package-modal');
+const closeModalBtn = document.querySelector('.close-modal');
+const btnsDetails = document.querySelectorAll('.btn-details');
+
+// Modal Elements
+const mImage = document.getElementById('m-image');
+const mTitle = document.getElementById('m-title');
+const mDuration = document.getElementById('m-duration');
+const mPrice = document.getElementById('m-price');
+const mItinerary = document.getElementById('m-itinerary');
+const mInclusions = document.getElementById('m-inclusions');
+const mExclusions = document.getElementById('m-exclusions');
+
+// Open Modal
+btnsDetails.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const pkgId = parseInt(btn.getAttribute('data-id'));
+        const pkg = packages.find(p => p.id === pkgId);
+
+        if (pkg) {
+            // Populate Data
+            mImage.src = pkg.image;
+            mTitle.textContent = pkg.name;
+            mDuration.textContent = pkg.duration;
+            mPrice.textContent = pkg.price;
+
+            // Itinerary
+            mItinerary.innerHTML = pkg.itinerary.map(day =>
+                `<div class="day-item"><strong>${day.split(':')[0]}</strong>${day.split(':').slice(1).join(':')}</div>`
+            ).join('');
+
+            // Inclusions
+            mInclusions.innerHTML = pkg.inclusions.map(inc => `<li>${inc}</li>`).join('');
+
+            // Exclusions
+            mExclusions.innerHTML = pkg.exclusions.map(exc => `<li>${exc}</li>`).join('');
+
+            // Show Modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    });
+});
+
+// Close Modal
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+}
+
+// Close on outside click
+window.addEventListener('click', (e) => {
+    if (e.target == modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+
+// --- 3. Testimonial Slider ---
+const slides = document.querySelectorAll('.testimonial-slide');
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Auto slide every 4 seconds
+if (slides.length > 0) {
+    setInterval(nextSlide, 4000);
+}
+
+
+// --- 4. Back to Top & Sticky Nav Shadow ---
+const backToTopBtn = document.getElementById('backToTop');
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+    // Sticky Nav Color Change
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+
+    // Back to Top Button
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        if ('scrollBehavior' in document.documentElement.style) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // Fallback for older browsers
+            window.scrollTo(0, 0);
+        }
+    });
+}
+
+
+// --- 5. Contact Form Validation ---
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+        const successMsg = document.querySelector('.success-msg');
+        let isValid = true;
+
+        // Reset errors
+        document.querySelectorAll('.error-msg').forEach(msg => msg.style.display = 'none');
+        successMsg.style.display = 'none';
+
+        // Validate Name
+        if (name.value.trim() === '') {
+            showError(name, 'Name is required');
+            isValid = false;
+        }
+
+        // Validate Email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+            showError(email, 'Please enter a valid email');
+            isValid = false;
+        }
+
+        // Validate Message
+        if (message.value.trim() === '') {
+            showError(message, 'Message cannot be empty');
+            isValid = false;
+        }
+
+        if (isValid) {
+            // Simulate form submission
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                if (successMsg) successMsg.style.display = 'block';
+                contactForm.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+
+                // Remove success message after 5 seconds
+                setTimeout(() => {
+                    if (successMsg) successMsg.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        }
+    });
+}
+
+function showError(input, message) {
+    const formGroup = input.parentElement;
+    let errorDisplay = formGroup.querySelector('.error-msg');
+
+    if (!errorDisplay) {
+        errorDisplay = document.createElement('small');
+        errorDisplay.className = 'error-msg';
+        errorDisplay.style.color = 'red';
+        errorDisplay.style.display = 'none';
+        formGroup.appendChild(errorDisplay);
+    }
+
+    errorDisplay.textContent = message;
+    errorDisplay.style.display = 'block';
+}
+
+
+// --- 6. Booking & Payment Logic ---
+const openBookingBtn = document.getElementById('openBookingBtn');
+const bookingModal = document.getElementById('booking-modal');
+const closeBookingBtn = document.getElementById('closeBooking');
+const bookingForm = document.getElementById('bookingForm');
+const bookingStep1 = document.getElementById('booking-step-1');
+const bookingStep2 = document.getElementById('booking-step-2');
+
+// Inputs
+const bPackageName = document.getElementById('b-package-name');
+const bTravelers = document.getElementById('b-travelers');
+const bTotal = document.getElementById('b-total');
+const pAmount = document.getElementById('p-amount');
+
+let currentPackagePrice = 0;
+
+// Open Booking Modal
+if (openBookingBtn) {
+    openBookingBtn.addEventListener('click', () => {
+        // Close package modal if open
+        const pkgModal = document.getElementById('package-modal');
+        if (pkgModal) pkgModal.style.display = 'none';
+
+        // Reset Steps
+        if (bookingStep1) bookingStep1.style.display = 'block';
+        if (bookingStep2) bookingStep2.style.display = 'none';
+        bookingForm.reset();
+
+        // Get current package details
+        const pkgTitleEl = document.getElementById('m-title');
+        const pkgPriceEl = document.getElementById('m-price');
+
+        if (pkgTitleEl && pkgPriceEl) {
+            const pkgName = pkgTitleEl.textContent;
+            const priceText = pkgPriceEl.textContent;
+            currentPackagePrice = parseInt(priceText.replace(/[^\d]/g, ''));
+
+            // Set Initial Values
+            if (bPackageName) bPackageName.textContent = `Booking for: ${pkgName}`;
+            if (bTravelers) bTravelers.value = 1;
+            updateTotal();
+
+            // Show Booking Modal
+            if (bookingModal) {
+                bookingModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    });
+}
+
+// Close Booking Modal
+if (closeBookingBtn) {
+    closeBookingBtn.addEventListener('click', () => {
+        bookingModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+}
+
+// Update Total Price on Traveler Change
+if (bTravelers) {
+    bTravelers.addEventListener('input', updateTotal);
+    bTravelers.addEventListener('change', updateTotal);
+}
+
+function updateTotal() {
+    if (!bTravelers || !bTotal) return;
+    const count = parseInt(bTravelers.value) || 1; // Default to 1 if invalid
+    const total = count * currentPackagePrice;
+    bTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
+}
+
+// Handle Form Submission (Show QR)
+if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Simple Validation
+        if (bTravelers.value < 1) {
+            alert("Please enter at least 1 traveler.");
+            return;
+        }
+
+        // Switch to Step 2 (QR Code)
+        if (bookingStep1) bookingStep1.style.display = 'none';
+        if (bookingStep2) bookingStep2.style.display = 'block';
+
+        // Set Payment Amount
+        if (pAmount && bTotal) pAmount.textContent = bTotal.textContent;
+    });
+}
+
+// Payment Done
+const paymentDoneBtn = document.getElementById('paymentDoneBtn');
+if (paymentDoneBtn) {
+    paymentDoneBtn.addEventListener('click', () => {
+        alert("Payment Successful! Your booking is confirmed. We will contact you shortly.");
+        if (bookingModal) bookingModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+}
