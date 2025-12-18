@@ -541,11 +541,95 @@ if (bookingForm) {
     });
 }
 
-// Payment Done
+// Payment Done & Bill Generation
 const paymentDoneBtn = document.getElementById('paymentDoneBtn');
 if (paymentDoneBtn) {
     paymentDoneBtn.addEventListener('click', () => {
-        alert("Payment Successful! Your booking is confirmed. We will contact you shortly.");
+
+        // 1. Gather Data for Bill
+        const pkgName = document.getElementById('b-package-name').textContent.replace('Booking for: ', '');
+        const name = document.getElementById('b-name').value || "Guest";
+        const phone = document.getElementById('b-phone').value || "N/A";
+        const date = document.getElementById('b-date').value || "N/A";
+        const travelers = document.getElementById('b-travelers').value;
+        const totalAmount = document.getElementById('b-total').textContent;
+        const paymentDate = new Date().toLocaleString();
+        const bookingId = "WP-" + Math.floor(Math.random() * 1000000);
+
+        // 2. Generate PDF using jsPDF
+        // Check if jsPDF is loaded
+        if (window.jspdf) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Styling variables
+            const margin = 20;
+            let y = 30;
+
+            // -- Header --
+            doc.setFontSize(22);
+            doc.setTextColor(0, 128, 128); // Teal color
+            doc.text("WildPath Explorers", margin, y);
+            y += 10;
+
+            doc.setFontSize(12);
+            doc.setTextColor(100);
+            doc.text("Explore India & Beyond", margin, y);
+            y += 20;
+
+            doc.setLineWidth(0.5);
+            doc.line(margin, y, 190, y); // Horizontal Line
+            y += 10;
+
+            // -- Invoice Details --
+            doc.setFontSize(16);
+            doc.setTextColor(0);
+            doc.text("Payment Receipt", margin, y);
+            y += 10;
+
+            doc.setFontSize(11);
+            doc.setTextColor(50);
+            doc.text(`Booking ID: ${bookingId}`, margin, y);
+            y += 7;
+            doc.text(`Payment Date: ${paymentDate}`, margin, y);
+            y += 15;
+
+            // -- Table/List of Details --
+            const details = [
+                ["Customer Name", name],
+                ["Phone Number", phone],
+                ["Package Name", pkgName],
+                ["Travel Date", date],
+                ["No. of Travelers", travelers],
+                ["Total Paid", totalAmount]
+            ];
+
+            details.forEach(([label, value]) => {
+                doc.setFont("helvetica", "bold");
+                doc.text(`${label}:`, margin, y);
+                doc.setFont("helvetica", "normal");
+                doc.text(value, margin + 50, y);
+                y += 8;
+            });
+
+            y += 10;
+            doc.setLineWidth(0.5);
+            doc.line(margin, y, 190, y);
+            y += 15;
+
+            // -- Footer --
+            doc.setFontSize(14);
+            doc.setTextColor(0, 128, 128); // Teal
+            doc.text("Thank you for booking with WildPath Explorers!", margin, y);
+
+            // 3. Save PDF
+            doc.save(`WildPath_Invoice_${bookingId}.pdf`);
+        } else {
+            console.error("jsPDF library not found");
+        }
+
+        // 4. Close Modal & Success Message
+        alert("Payment Successful! Your receipt is downloading...");
         if (bookingModal) bookingModal.style.display = 'none';
         document.body.style.overflow = 'auto'; // Re-enable scrolling
     });
