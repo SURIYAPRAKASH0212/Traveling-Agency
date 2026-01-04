@@ -1,9 +1,4 @@
-// WildPath Explorers - JavaScript
 
-/* 
-  Data: Packages Array 
-  Contains all details for the modal popup 
-*/
 const packages = [
     {
         id: 1,
@@ -125,7 +120,6 @@ const packages = [
     }
 ];
 
-// --- 1. Mobile Menu Toggle ---
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
@@ -133,7 +127,6 @@ if (hamburger) {
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
-        // Change icon based on state (optional)
         const icon = hamburger.querySelector('i');
         if (navLinks.classList.contains('active')) {
             icon.classList.remove('fa-bars');
@@ -145,7 +138,6 @@ if (hamburger) {
     });
 }
 
-// Close menu when clicking link
 document.querySelectorAll('.nav-links li a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -156,12 +148,10 @@ document.querySelectorAll('.nav-links li a').forEach(link => {
 });
 
 
-// --- 2. Modal Logic ---
 const modal = document.getElementById('package-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const btnsDetails = document.querySelectorAll('.btn-details');
 
-// Modal Elements
 const mImage = document.getElementById('m-image');
 const mTitle = document.getElementById('m-title');
 const mDuration = document.getElementById('m-duration');
@@ -170,8 +160,6 @@ const mItinerary = document.getElementById('m-itinerary');
 const mInclusions = document.getElementById('m-inclusions');
 const mExclusions = document.getElementById('m-exclusions');
 
-// Open Modal
-// --- 7. Search & Filter Logic ---
 const searchBtn = document.getElementById('searchBtn');
 const searchInput = document.getElementById('searchInput');
 const budgetSelect = document.getElementById('budgetSelect');
@@ -206,10 +194,6 @@ function renderPackages(data) {
         packagesGrid.appendChild(card);
     });
 
-    // Re-attach event listeners for new buttons
-    // Note: We are using Event Delegation for the Modal opening in Section 2, so no need to re-attach if we use delegation there too.
-    // BUT Section 2 used direct listeners `btnsDetails.forEach`. I need to change Section 2 to delegation OR re-attach here.
-    // Let's use delegation for Modal opening as well to be safe and clean.
 }
 
 function filterPackages() {
@@ -218,12 +202,10 @@ function filterPackages() {
     const duration = durationSelect.value;
 
     const filtered = packages.filter(pkg => {
-        // 1. Text Search
         const matchesName = pkg.name.toLowerCase().includes(query);
         const matchesLoc = pkg.itinerary.some(day => day.toLowerCase().includes(query));
         const textMatch = matchesName || matchesLoc;
 
-        // 2. Budget Filter
         const price = parseInt(pkg.price.replace(/[^\d]/g, ''));
         let budgetMatch = true;
         if (budget === '10000') budgetMatch = price < 10000;
@@ -231,7 +213,6 @@ function filterPackages() {
         else if (budget === '50000') budgetMatch = price > 30000 && price <= 50000;
         else if (budget === 'more') budgetMatch = price > 50000;
 
-        // 3. Duration Filter
         const days = parseInt(pkg.duration.match(/\d+/)[0]);
         let durationMatch = true;
         if (duration === 'short') durationMatch = days >= 3 && days <= 5;
@@ -244,18 +225,14 @@ function filterPackages() {
     renderPackages(filtered);
 }
 
-// Event Listener
 if (searchBtn) {
     searchBtn.addEventListener('click', filterPackages);
 }
 
-// Initial Render (to ensure dynamic rendering works)
-// Note: We will Replace the hardcoded HTML with this dynamic render on load
 document.addEventListener('DOMContentLoaded', () => {
     renderPackages(packages);
 });
 
-// Update Modal Open Logic to Delegation (replaces Section 2 logic partially)
 document.addEventListener('click', (e) => {
     if (e.target && e.target.classList.contains('btn-details')) {
         const btn = e.target;
@@ -263,7 +240,6 @@ document.addEventListener('click', (e) => {
         const pkg = packages.find(p => p.id === pkgId);
 
         if (pkg) {
-            // Populate Data
             const mImage = document.getElementById('m-image');
             const mTitle = document.getElementById('m-title');
             const mDuration = document.getElementById('m-duration');
@@ -278,18 +254,14 @@ document.addEventListener('click', (e) => {
             if (mDuration) mDuration.textContent = pkg.duration;
             if (mPrice) mPrice.textContent = pkg.price;
 
-            // Itinerary
             if (mItinerary) mItinerary.innerHTML = pkg.itinerary.map(day =>
                 `<div class="day-item"><strong>${day.split(':')[0]}</strong>${day.split(':').slice(1).join(':')}</div>`
             ).join('');
 
-            // Inclusions
             if (mInclusions) mInclusions.innerHTML = pkg.inclusions.map(inc => `<li>${inc}</li>`).join('');
 
-            // Exclusions
             if (mExclusions) mExclusions.innerHTML = pkg.exclusions.map(exc => `<li>${exc}</li>`).join('');
 
-            // Show Modal
             if (modal) {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
@@ -298,7 +270,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close Modal
 if (closeModalBtn) {
     closeModalBtn.addEventListener('click', () => {
         modal.style.display = 'none';
@@ -306,7 +277,6 @@ if (closeModalBtn) {
     });
 }
 
-// Close on outside click
 window.addEventListener('click', (e) => {
     if (e.target == modal) {
         modal.style.display = 'none';
@@ -315,7 +285,6 @@ window.addEventListener('click', (e) => {
 });
 
 
-// --- 3. Testimonial Slider ---
 const slides = document.querySelectorAll('.testimonial-slide');
 let currentSlide = 0;
 
@@ -333,25 +302,21 @@ function nextSlide() {
     showSlide(currentSlide);
 }
 
-// Auto slide every 4 seconds
 if (slides.length > 0) {
     setInterval(nextSlide, 4000);
 }
 
 
-// --- 4. Back to Top & Sticky Nav Shadow ---
 const backToTopBtn = document.getElementById('backToTop');
 const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
-    // Sticky Nav Color Change
     if (window.scrollY > 50) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
 
-    // Back to Top Button
     if (window.scrollY > 300) {
         backToTopBtn.classList.add('show');
     } else {
@@ -367,14 +332,11 @@ if (backToTopBtn) {
                 behavior: 'smooth'
             });
         } else {
-            // Fallback for older browsers
             window.scrollTo(0, 0);
         }
     });
 }
 
-
-// --- 5. Contact Form Validation ---
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
@@ -387,31 +349,25 @@ if (contactForm) {
         const successMsg = document.querySelector('.success-msg');
         let isValid = true;
 
-        // Reset errors
         document.querySelectorAll('.error-msg').forEach(msg => msg.style.display = 'none');
         successMsg.style.display = 'none';
 
-        // Validate Name
         if (name.value.trim() === '') {
             showError(name, 'Name is required');
             isValid = false;
         }
 
-        // Validate Email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email.value.trim())) {
             showError(email, 'Please enter a valid email');
             isValid = false;
         }
-
-        // Validate Message
         if (message.value.trim() === '') {
             showError(message, 'Message cannot be empty');
             isValid = false;
         }
 
         if (isValid) {
-            // Simulate form submission
             const btn = document.querySelector('.btn-submit');
             const originalText = btn.textContent;
             btn.textContent = 'Sending...';
@@ -423,7 +379,6 @@ if (contactForm) {
                 btn.textContent = originalText;
                 btn.disabled = false;
 
-                // Remove success message after 5 seconds
                 setTimeout(() => {
                     if (successMsg) successMsg.style.display = 'none';
                 }, 5000);
@@ -449,7 +404,6 @@ function showError(input, message) {
 }
 
 
-// --- 6. Booking & Payment Logic ---
 const openBookingBtn = document.getElementById('openBookingBtn');
 const bookingModal = document.getElementById('booking-modal');
 const closeBookingBtn = document.getElementById('closeBooking');
@@ -457,7 +411,6 @@ const bookingForm = document.getElementById('bookingForm');
 const bookingStep1 = document.getElementById('booking-step-1');
 const bookingStep2 = document.getElementById('booking-step-2');
 
-// Inputs
 const bPackageName = document.getElementById('b-package-name');
 const bTravelers = document.getElementById('b-travelers');
 const bTotal = document.getElementById('b-total');
@@ -465,19 +418,15 @@ const pAmount = document.getElementById('p-amount');
 
 let currentPackagePrice = 0;
 
-// Open Booking Modal (Event Delegation)
 document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'openBookingBtn') {
-        // Close package modal if open
         const pkgModal = document.getElementById('package-modal');
         if (pkgModal) pkgModal.style.display = 'none';
 
-        // Reset Steps
         if (bookingStep1) bookingStep1.style.display = 'block';
         if (bookingStep2) bookingStep2.style.display = 'none';
         if (bookingForm) bookingForm.reset();
 
-        // Get current package details
         const pkgTitleEl = document.getElementById('m-title');
         const pkgPriceEl = document.getElementById('m-price');
 
@@ -486,12 +435,10 @@ document.addEventListener('click', (e) => {
             const priceText = pkgPriceEl.textContent;
             currentPackagePrice = parseInt(priceText.replace(/[^\d]/g, '')) || 0;
 
-            // Set Initial Values
             if (bPackageName) bPackageName.textContent = `Booking for: ${pkgName}`;
             if (bTravelers) bTravelers.value = 1;
             updateTotal();
 
-            // Show Booking Modal
             if (bookingModal) {
                 bookingModal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
@@ -500,7 +447,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close Booking Modal
 if (closeBookingBtn) {
     closeBookingBtn.addEventListener('click', () => {
         bookingModal.style.display = 'none';
@@ -508,7 +454,6 @@ if (closeBookingBtn) {
     });
 }
 
-// Update Total Price on Traveler Change
 if (bTravelers) {
     bTravelers.addEventListener('input', updateTotal);
     bTravelers.addEventListener('change', updateTotal);
@@ -516,37 +461,30 @@ if (bTravelers) {
 
 function updateTotal() {
     if (!bTravelers || !bTotal) return;
-    const count = parseInt(bTravelers.value) || 1; // Default to 1 if invalid
+    const count = parseInt(bTravelers.value) || 1;
     const total = count * currentPackagePrice;
     bTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
 }
 
-// Handle Form Submission (Show QR)
 if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // Simple Validation
         if (bTravelers.value < 1) {
             alert("Please enter at least 1 traveler.");
             return;
         }
 
-        // Switch to Step 2 (QR Code)
         if (bookingStep1) bookingStep1.style.display = 'none';
         if (bookingStep2) bookingStep2.style.display = 'block';
 
-        // Set Payment Amount
         if (pAmount && bTotal) pAmount.textContent = bTotal.textContent;
     });
 }
 
-// Payment Done & Bill Generation
 const paymentDoneBtn = document.getElementById('paymentDoneBtn');
 if (paymentDoneBtn) {
     paymentDoneBtn.addEventListener('click', () => {
 
-        // 1. Gather Data for Bill
         const pkgName = document.getElementById('b-package-name').textContent.replace('Booking for: ', '');
         const name = document.getElementById('b-name').value || "Guest";
         const phone = document.getElementById('b-phone').value || "N/A";
@@ -556,19 +494,15 @@ if (paymentDoneBtn) {
         const paymentDate = new Date().toLocaleString();
         const bookingId = "WP-" + Math.floor(Math.random() * 1000000);
 
-        // 2. Generate PDF using jsPDF
-        // Check if jsPDF is loaded
         if (window.jspdf) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Styling variables
             const margin = 20;
             let y = 30;
 
-            // -- Header --
             doc.setFontSize(22);
-            doc.setTextColor(0, 128, 128); // Teal color
+            doc.setTextColor(0, 128, 128);
             doc.text("WildPath Explorers", margin, y);
             y += 10;
 
@@ -578,10 +512,9 @@ if (paymentDoneBtn) {
             y += 20;
 
             doc.setLineWidth(0.5);
-            doc.line(margin, y, 190, y); // Horizontal Line
+            doc.line(margin, y, 190, y);
             y += 10;
 
-            // -- Invoice Details --
             doc.setFontSize(16);
             doc.setTextColor(0);
             doc.text("Payment Receipt", margin, y);
@@ -594,7 +527,6 @@ if (paymentDoneBtn) {
             doc.text(`Payment Date: ${paymentDate}`, margin, y);
             y += 15;
 
-            // -- Table/List of Details --
             const details = [
                 ["Customer Name", name],
                 ["Phone Number", phone],
@@ -617,20 +549,17 @@ if (paymentDoneBtn) {
             doc.line(margin, y, 190, y);
             y += 15;
 
-            // -- Footer --
             doc.setFontSize(14);
-            doc.setTextColor(0, 128, 128); // Teal
+            doc.setTextColor(0, 128, 128);
             doc.text("Thank you for booking with WildPath Explorers!", margin, y);
 
-            // 3. Save PDF
             doc.save(`WildPath_Invoice_${bookingId}.pdf`);
         } else {
             console.error("jsPDF library not found");
         }
 
-        // 4. Close Modal & Success Message
         alert("Payment Successful! Your receipt is downloading...");
         if (bookingModal) bookingModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
+        document.body.style.overflow = 'auto';
     });
 }

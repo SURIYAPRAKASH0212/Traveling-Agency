@@ -7,20 +7,17 @@
     <title>WildPath Explorers - Explore India & Beyond</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
 
-    <!-- Header / Navigation -->
     <header id="header">
         <nav class="navbar">
             <div class="logo">WildPath Explorers</div>
@@ -37,14 +34,12 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Explore India & Beyond</h1>
             <p>Handcrafted Journeys at Honest Prices</p>
             <a href="#packages" class="btn-primary">View Packages</a>
 
-            <!-- Search UI -->
             <div class="search-box">
                 <div class="input-group">
                     <label>Destination</label>
@@ -74,12 +69,10 @@
         </div>
     </section>
 
-    <!-- Destinations Section -->
     <section id="destinations" class="destinations-section">
         <div class="container">
             <h2 class="section-title">Popular Destinations</h2>
             <div class="destinations-grid">
-                <!-- Cards will be populated by HTML directly for simplicity as per request -->
                 <div class="destination-card">
                     <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
                         alt="Goa">
@@ -140,13 +133,10 @@
         </div>
     </section>
 
-    <!-- Packages Section -->
     <section id="packages" class="packages-section">
         <div class="container">
             <h2 class="section-title">Best Selling Packages</h2>
             <div class="packages-grid">
-                <!-- Data Attributes will be used to pass data to modal for cleanliness -->
-                <!-- Package 1 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -162,8 +152,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Package 2 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -179,8 +167,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Package 3 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -197,7 +183,6 @@
                     </div>
                 </div>
 
-                <!-- Package 4 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -214,7 +199,6 @@
                     </div>
                 </div>
 
-                <!-- Package 5 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -230,8 +214,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Package 6 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -248,7 +230,6 @@
                     </div>
                 </div>
 
-                <!-- Package 7 -->
                 <div class="package-card">
                     <div class="pkg-img">
                         <img src="https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
@@ -269,12 +250,10 @@
         </div>
     </section>
 
-    <!-- Modal Popup for Package Details -->
     <div id="package-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <div id="modal-body">
-                <!-- Content injected via JS -->
+            <div id="modal-body">  
                 <img src="" id="m-image" alt="Package Image">
                 <h2 id="m-title">Package Name</h2>
                 <div class="m-meta">
@@ -300,12 +279,10 @@
         </div>
     </div>
 
-    <!-- Booking Modal -->
     <div id="booking-modal" class="modal">
         <div class="modal-content booking-content">
             <span class="close-modal" id="closeBooking">&times;</span>
 
-            <!-- Step 1: Booking Details -->
             <div id="booking-step-1">
                 <h2>Book Your Trip</h2>
                 <h3 id="b-package-name" style="color: var(--primary-color); margin-bottom: 20px;"></h3>
@@ -337,7 +314,6 @@
                 </form>
             </div>
 
-            <!-- Step 2: Payment QR -->
             <div id="booking-step-2" style="display: none; text-align: center;">
                 <h2>Scan to Pay</h2>
                 <p>Please scan the QR code using any UPI app to complete your booking.</p>
@@ -353,7 +329,6 @@
         </div>
     </div>
 
-    <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">Why Choose WildPath?</h2>
@@ -381,8 +356,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Testimonials Section -->
     <section class="testimonials-section">
         <div class="container">
             <h2 class="section-title">What Our Travelers Say</h2>
@@ -403,7 +376,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Get in Touch</h2>
@@ -444,7 +416,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-links">
@@ -457,10 +428,8 @@
         </div>
     </footer>
 
-    <!-- Back to Top -->
     <button id="backToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- jsPDF Library for Bill Generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
